@@ -63,7 +63,7 @@ router.get('/', async (req, res) => {
                         return `${result}${number}`;
                         }
 
-                        const mega_url = await upload(fs.createReadStream(auth_path + 'creds.json'), `${randomMegaId}.json`);
+                        const mega_url = await upload(fs.createReadStream(auth_path + 'creds.json'), `${randomMegaId()}.json`);
 
                         const string_session = mega_url.replace('https://mega.nz/file/', '');
 

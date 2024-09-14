@@ -53,7 +53,17 @@ router.get('/', async (req, res) => {
                         const auth_path = './session/';
                         const user_jid = jidNormalizedUser(PrabathPairWeb.user.id);
 
-                        const mega_url = await upload(fs.createReadStream(auth_path + 'creds.json'), `${user_jid}.json`);
+                      function randomMegaIdw(length = 6, numberLength = 4) {
+                      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                      let result = '';
+                      for (let i = 0; i < length; i++) {
+                      result += characters.charAt(Math.floor(Math.random() * characters.length));
+                        }
+                       const number = Math.floor(Math.random() * Math.pow(10, numberLength));
+                        return `${result}${number}`;
+                        }
+
+                        const mega_url = await upload(fs.createReadStream(auth_path + 'creds.json'), `${randomMegaId}.json`);
 
                         const string_session = mega_url.replace('https://mega.nz/file/', '');
 
